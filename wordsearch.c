@@ -73,13 +73,13 @@ int main(int argc, char **argv)
 	printf("\n");
 
 	// Call searchPuzzle to find all words in the puzzle
-	/*searchPuzzle(block, bSize, words, 50);
+	searchPuzzle(block, bSize, words, 50);
 	printf("\n");
 
 	// Print out final puzzle grid with found words in lower case
 	printf("Printing puzzle after search:\n");
 	printPuzzle(block, bSize);
-	printf("\n");*/
+	printf("\n");
 
 	return 0;
 }
