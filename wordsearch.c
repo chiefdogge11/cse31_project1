@@ -90,12 +90,11 @@ void printPuzzle(char **arr, int n)
 	// Your implementation here
 	int i, j, k;
 
-
 	//rows
-	for ( i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 	{
 		//columns
-		for ( j = 0; j < n; j++)
+		for (j = 0; j < n; j++)
 		{
 
 			printf("%c", *(*(arr + i) + j));
@@ -110,74 +109,94 @@ void searchPuzzle(char **arr, int n, char **list, int listSize)
 	// Your implementation here
 	int counter = 0;
 	int number = 4;
-	char *inrow = (char*)malloc(number * sizeof(char*));
-	int *words = (int*)malloc(4 * sizeof(int*));
+	char *inrow = (char *)malloc(number * sizeof(char *));
+	int *words = (int *)malloc(4 * sizeof(int *));
 	//printf("hello world");
 	// left to right search
-	for(int i = 0; i < n; i++){ // the row its on
-		for(int j = 0; j < 12; j++){ // the column its on, so the number in the ith array// how many numbers we will skp
-			if(number == -23151185185){
+	for (int i = 0; i < n; i++)
+	{ // the row its on
+		for (int j = 0; j < 12; j++)
+		{ // the column its on, so the number in the ith array// how many numbers we will skp
+			if (number == -23151185185)
+			{
 				// this is dead code but can be used for searching at different inncrements in columns
 			}
-			else{
+			else
+			{
 				// find the word
-				for(int k = 0; k < number; k++){ // for every 3 in row
-					if(k == 0){
-						*(inrow + k) = (char)*(*(arr + i) + (j + k));	
+				for (int k = 0; k < number; k++)
+				{ // for every 3 in row
+					if (k == 0)
+					{
+						*(inrow + k) = (char)*(*(arr + i) + (j + k));
 					}
-					if(k != 0){
+					if (k != 0)
+					{
 						//char tolower = ((char)*(*(arr + i) + (j + k)));
 						//printf("%c", tolower + 32);
-						*(inrow + k) = ((char)*(*(arr + i) + (j + k)))+32;
+						*(inrow + k) = ((char)*(*(arr + i) + (j + k))) + 32;
 					}
 				}
 				//for(int k = 0; k < number; k++){ // for every 3 in row
-					//printf("%c", *(inrow + k));
+				//printf("%c", *(inrow + k));
 				//}
 
 				//checking for the word in the list
-				for(int l = 0; l < listSize; l++){ // row of word in wordlist
+				for (int l = 0; l < listSize; l++)
+				{ // row of word in wordlist
 					counter = 0;
-					if(*(inrow + 0) == (char)*(*(list + l) + 0 )){
-							for(int m = 0; m < number; m++){
+					if (*(inrow + 0) == (char)*(*(list + l) + 0))
+					{
+						for (int m = 0; m < number; m++)
+						{
 							//printf("passed check 1\n");
-							if(*(inrow + m) == (char)*(*(list + l) + m )){
+							if (*(inrow + m) == (char)*(*(list + l) + m))
+							{
 								//printf("%d------", counter);
-							counter++;
-							//printf("%d------", counter);
-							//printf("\n");
-									if(counter == number){
+								counter++;
+								//printf("%d------", counter);
+								//printf("\n");
+								if (counter == number)
+								{
 									printf("word found: ");
-										for(int length = 0; (char)*(*(list + l) + length) != NULL; length++){
-											printf("%c", (char)*(*(list + l) + length));
-										}
-										printf("\n");
+									for (int length = 0; (char)*(*(list + l) + length) != NULL; length++)
+									{
+										printf("%c", (char)*(*(list + l) + length));
 									}
+									printf("\n");
+								}
 							}
-						}	
-					}	
-					else{
-
-					}						
+						}
+					}
+					else
+					{
+					}
 				}
 			}
 		}
 	}
-	
+
 	// From top down
-	for(int i = 0; i < n; i++){ // the row its on
-		for(int j = 0; j < 12; j++){ // the column its on, so the number in the ith array// how many numbers we will skp
-			if(number == -23151185185){
+	for (int i = 0; i < n; i++)
+	{ // the row its on
+		for (int j = 0; j < 12; j++)
+		{ // the column its on, so the number in the ith array// how many numbers we will skp
+			if (number == -23151185185)
+			{
 				// this is dead code but can be used for searching at different inncrements in columns
 			}
-			else{
+			else
+			{
 				// find the word
-				for(int k = 0; k < number; k++){ // for every 3 in row
-				//printf("i made it here hello\n");
-					if(k == 0){
-						*(inrow + k) = (char)*(*(arr + (j + k)) + (i));	
+				for (int k = 0; k < number; k++)
+				{	// for every 3 in row
+					//printf("i made it here hello\n");
+					if (k == 0)
+					{
+						*(inrow + k) = (char)*(*(arr + (j + k)) + (i));
 					}
-					if(k != 0){
+					if (k != 0)
+					{
 						//printf("i made it here hello3\n");
 						//char tolower = ((char)*(*(arr + i) + (j + k)));
 						//printf("%c", tolower + 32);
@@ -187,39 +206,45 @@ void searchPuzzle(char **arr, int n, char **list, int listSize)
 						*(inrow + k) = ((char)*(*(arr + (j + k)) + (i))) + 32;
 						//printf("i made it here hello3.1\n");
 					}
-						//printf("i made it here hello4\n");
+					//printf("i made it here hello4\n");
 				}
 				//for(int k = 0; k < number; k++){ // for every 3 in row
-					//printf("%c", *(inrow + k));
+				//printf("%c", *(inrow + k));
 				//}
 
 				//checking for the word in the list
 				//printf("i made it here hello 1\n");
-				for(int l = 0; l < listSize; l++){ // row of word in wordlist
-				//printf("i made it here hello 2\n");
+				for (int l = 0; l < listSize; l++)
+				{	// row of word in wordlist
+					//printf("i made it here hello 2\n");
 					counter = 0;
-					if(*(inrow + 0) == (char)*(*(list + l) + 0 )){
-							for(int m = 0; m < number; m++){
+					if (*(inrow + 0) == (char)*(*(list + l) + 0))
+					{
+						for (int m = 0; m < number; m++)
+						{
 							//printf("i was here \n");
-							if(*(inrow + m) == (char)*(*(list + l) + m )){
+							if (*(inrow + m) == (char)*(*(list + l) + m))
+							{
 								//printf("%d------", counter);
-							counter++;
-							//printf("%d------", counter);
-							//printf("\n");
-									if(counter == number){
-										//printf("i was here 1 \n");
-										printf("word found: ");
-										for(int length = 0; (char)*(*(list + l) + length) != NULL; length++){
-											printf("%c", (char)*(*(list + l) + length));
-										}
-										printf("\n");
+								counter++;
+								//printf("%d------", counter);
+								//printf("\n");
+								if (counter == number)
+								{
+									//printf("i was here 1 \n");
+									printf("word found: ");
+									for (int length = 0; (char)*(*(list + l) + length) != NULL; length++)
+									{
+										printf("%c", (char)*(*(list + l) + length));
 									}
+									printf("\n");
+								}
 							}
-						}	
-					}	
-					else{
-
-					}						
+						}
+					}
+					else
+					{
+					}
 				}
 				//printf("i was here 3\n");
 			}
@@ -228,63 +253,167 @@ void searchPuzzle(char **arr, int n, char **list, int listSize)
 		}
 		//printf("i was here 5 \n");
 	}
-	
-	// From Bottom up (not complete)
-	for(int i = 0; i < n; i++){ // the row its on
-		for(int j = 0; j < 12; j++){ // the column its on, so the number in the ith array// how many numbers we will skp
-			if(number == -23151185185){
+
+	// From Bottom up (complete potentially  need to be tested)
+	for (int i = 0; i < n; i++)
+	{	// the row its on
+		//printf("i made it here hello\n");
+		for (int j = 14; j >= 3; j--)
+		{	// the column its on, so the number in the ith array// how many numbers we will skp
+			//printf("i made it here hello2\n");
+			if (number == -23151185185)
+			{
 				// this is dead code but can be used for searching at different inncrements in columns
 			}
-			else{
+			else
+			{
 				// find the word
-				for(int k = 0; k < number; k++){ // for every 3 in row
-				//printf("i made it here hello\n");
-					if(k == 0){
-						*(inrow + k) = (char)*(*(arr + (j + k)) + (i));	
+				//printf("i made it here hello3\n");
+				for (int k = 0; k < number; k++)
+				{	// for every 3 in row
+					//printf("i made it here hello4\n");
+					if (k == 0)
+					{
+						//printf("i made it here hello5\n");
+						*(inrow + k) = (char)*(*(arr + (j - k)) + (i));
+						//printf("i made it here hello5.1\n");
 					}
-					if(k != 0){
-						//printf("i made it here hello3\n");
+					//printf("i made it here hello5.2\n");
+					if (k != 0)
+					{
+						//printf("i made it here hello 6\n");
 						//char tolower = ((char)*(*(arr + i) + (j + k)));
 						//printf("%c", tolower + 32);
 						//printf("i is %d ", i);
 						//printf("j is %d ", j);
 						//printf("k is %d ", k);
-						*(inrow + k) = ((char)*(*(arr + (j + k)) + (i))) + 32;
-						//printf("i made it here hello3.1\n");
+						*(inrow + k) = ((char)*(*(arr + (j - k)) + (i))) + 32;
+						//printf("i made it here hello7\n");
 					}
-						//printf("i made it here hello4\n");
+					//printf("i made it here hello6.2\n");
 				}
 				//for(int k = 0; k < number; k++){ // for every 3 in row
-					//printf("%c", *(inrow + k));
+				//printf("%c", *(inrow + k));
 				//}
 
 				//checking for the word in the list
 				//printf("i made it here hello 1\n");
-				for(int l = 0; l < listSize; l++){ // row of word in wordlist
-				//printf("i made it here hello 2\n");
+				for (int l = 0; l < listSize; l++)
+				{	// row of word in wordlist
+					//printf("i made it here hello 2\n");
 					counter = 0;
-					if(*(inrow + 0) == (char)*(*(list + l) + 0 )){
-							for(int m = 0; m < number; m++){
+					if (*(inrow + 0) == (char)*(*(list + l) + 0))
+					{
+						for (int m = 0; m < number; m++)
+						{
 							//printf("i was here \n");
-							if(*(inrow + m) == (char)*(*(list + l) + m )){
+							if (*(inrow + m) == (char)*(*(list + l) + m))
+							{
 								//printf("%d------", counter);
-							counter++;
-							//printf("%d------", counter);
-							//printf("\n");
-									if(counter == number){
-										//printf("i was here 1 \n");
-										printf("word found: ");
-										for(int length = 0; (char)*(*(list + l) + length) != NULL; length++){
-											printf("%c", (char)*(*(list + l) + length));
-										}
-										printf("\n");
+								counter++;
+								//printf("%d------", counter);
+								//printf("\n");
+								if (counter == number)
+								{
+									//printf("i was here 1 \n");
+									printf("word found: ");
+									for (int length = 0; (char)*(*(list + l) + length) != NULL; length++)
+									{
+										printf("%c", (char)*(*(list + l) + length));
 									}
+									printf("\n");
+								}
 							}
-						}	
-					}	
-					else{
+						}
+					}
+					else
+					{
+					}
+				}
+				//printf("i was here 3\n");
+			}
+			//printf("i was here 4 \n");
+			//printf("this is j %d ", j);
+		}
+		//printf("i was here 5 \n");
+	}
 
-					}						
+	// top left to bottom right
+	for (int i = 0; i < 12; i++)
+	{	// the row its on
+		//printf("i made it here hello\n");
+		for (int j = 0; j < 12; j++)
+		{	// the column its on, so the number in the ith array// how many numbers we will skp
+			//printf("i made it here hello2\n");
+			if (number == -23151185185)
+			{
+				// this is dead code but can be used for searching at different inncrements in columns
+			}
+			else
+			{
+				// find the word
+				//printf("i made it here hello3\n");
+				for (int k = 0; k < number; k++)
+				{	// for every 3 in row
+					//printf("i made it here hello4\n");
+					if (k == 0)
+					{
+						//printf("i is %d ", i);
+						//printf("j is %d ", j);
+						//printf("k is %d ", k);
+						//printf("i made it here hello5\n");
+						*(inrow + k) = (char)*(*(arr + (i + k)) + (j + k));
+						//printf("i made it here hello5.1\n");
+					}
+					//printf("i made it here hello5.2\n");
+					if (k != 0)
+					{
+						//printf("i made it here hello 6\n");
+						//char tolower = ((char)*(*(arr + i) + (j + k)));
+						//printf("%c", tolower + 32);
+						/*printf("i is %d ", i);
+						printf("j is %d ", j);
+						printf("k is %d ", k);
+						printf("\n reeeeee %c\n", (char)*(*(arr + (i + k)) + (j + k)));*/
+						*(inrow + k) = ((char)*(*(arr + (i + k)) + (j + k))) + 32;
+						//printf("i made it here hello7\n");
+					}
+					//printf("i made it here hello6.2\n");
+				}
+
+				//checking for the word in the list
+				//printf("i made it here hello 1\n");
+				for (int l = 0; l < listSize; l++)
+				{	// row of word in wordlist
+					//printf("i made it here hello 2\n");
+					counter = 0;
+					if (*(inrow + 0) == (char)*(*(list + l) + 0))
+					{
+						for (int m = 0; m < number; m++)
+						{
+							//printf("i was here \n");
+							if (*(inrow + m) == (char)*(*(list + l) + m))
+							{
+								//printf("%d------", counter);
+								counter++;
+								//printf("%d------", counter);
+								//printf("\n");
+								if (counter == number)
+								{
+									//printf("i was here 1 \n");
+									printf("word found: ");
+									for (int length = 0; (char)*(*(list + l) + length) != NULL; length++)
+									{
+										printf("%c", (char)*(*(list + l) + length));
+									}
+									printf("\n");
+								}
+							}
+						}
+					}
+					else
+					{
+					}
 				}
 				//printf("i was here 3\n");
 			}
@@ -294,4 +423,3 @@ void searchPuzzle(char **arr, int n, char **list, int listSize)
 		//printf("i was here 5 \n");
 	}
 }
-
